@@ -4,6 +4,9 @@
 
 🚀 Sync your AI skills across Claude Code and OpenClaw
 
+[![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)](https://github.com/verycafe/skillsync/releases)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 ## Quick Start
 
 ### Installation
@@ -30,6 +33,22 @@ You'll be prompted to enter:
 ```bash
 curl -fsSL https://raw.githubusercontent.com/verycafe/skillsync/main/install.sh | bash
 ```
+
+## Update
+
+### Check Current Version
+
+```bash
+skillsync --version
+```
+
+### Update to Latest Version
+
+```bash
+pip install --upgrade git+https://github.com/verycafe/skillsync.git
+```
+
+**What's New?** Check the [CHANGELOG](CHANGELOG.md) or [Releases](https://github.com/verycafe/skillsync/releases)
 
 ## Features
 
@@ -328,6 +347,33 @@ pip uninstall skillsync
 
 # Optional: Remove configuration
 rm -rf ~/.skillsync
+```
+
+### What Happens After Uninstall?
+
+| Item | Status After Uninstall | Notes |
+|------|----------------------|-------|
+| GitHub Remote Repository | ✅ Preserved | All synced skills remain safe |
+| Local Skills Files | ✅ Preserved | ~/.claude/skills/ untouched |
+| SkillSync Configuration | ❌ Deleted | ~/.skillsync/ (optional) |
+| SkillSync Program | ❌ Deleted | pip package removed |
+
+**Key Points:**
+- Your data is safe (local + GitHub backup)
+- You can reinstall anytime and reconnect to the same repository
+- Even after uninstall, you can access your skills on GitHub
+- Multiple machines can share the same GitHub repository
+
+**To Restore After Reinstall:**
+```bash
+# Reinstall
+pip install git+https://github.com/verycafe/skillsync.git
+
+# Reconnect to your repository
+skillsync init  # Use same token and repo
+
+# Pull your skills back
+skillsync pull
 ```
 
 ## Development

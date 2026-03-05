@@ -4,6 +4,9 @@
 
 🚀 自动同步你的 AI Skills (Claude Code & OpenClaw) 到 GitHub
 
+[![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)](https://github.com/verycafe/skillsync/releases)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 ## 快速开始
 
 ### 安装
@@ -30,6 +33,22 @@ skillsync init
 ```bash
 curl -fsSL https://raw.githubusercontent.com/verycafe/skillsync/main/install.sh | bash
 ```
+
+## 更新
+
+### 查看当前版本
+
+```bash
+skillsync --version
+```
+
+### 更新到最新版本
+
+```bash
+pip install --upgrade git+https://github.com/verycafe/skillsync.git
+```
+
+**查看更新内容：** 查看 [CHANGELOG](CHANGELOG.md) 或 [Releases](https://github.com/verycafe/skillsync/releases)
 
 ## 功能特性
 
@@ -328,6 +347,33 @@ pip uninstall skillsync
 
 # 可选：删除配置
 rm -rf ~/.skillsync
+```
+
+### 卸载后会怎样？
+
+| 项目 | 卸载后状态 | 说明 |
+|------|-----------|------|
+| GitHub 远程仓库 | ✅ 保留 | 所有已同步的 skills 安全保存 |
+| 本地 Skills 文件 | ✅ 保留 | ~/.claude/skills/ 不受影响 |
+| SkillSync 配置 | ❌ 删除 | ~/.skillsync/ 配置目录（可选） |
+| SkillSync 程序 | ❌ 删除 | pip 包被卸载 |
+
+**重要说明：**
+- 你的数据是安全的（本地 + GitHub 双备份）
+- 可以随时重新安装并恢复同步
+- 即使卸载，也可以直接访问 GitHub 仓库查看/下载 skills
+- 多台机器可以共享同一个 GitHub 仓库
+
+**重新安装后恢复：**
+```bash
+# 重新安装
+pip install git+https://github.com/verycafe/skillsync.git
+
+# 重新连接到你的仓库
+skillsync init  # 使用相同的 token 和仓库名
+
+# 拉取你的 skills
+skillsync pull
 ```
 
 ## 开发
