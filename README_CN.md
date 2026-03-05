@@ -6,22 +6,29 @@
 
 ## 快速开始
 
-### macOS / Linux
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/verycafe/skillsync/main/install.sh | bash
-```
-
-### Windows (PowerShell)
-
-```powershell
-irm https://raw.githubusercontent.com/verycafe/skillsync/main/install.ps1 | iex
-```
-
-### 手动安装
+### 安装
 
 ```bash
 pip install git+https://github.com/verycafe/skillsync.git
+```
+
+### 初始化
+
+```bash
+skillsync init
+```
+
+会提示你输入：
+- GitHub Personal Access Token（需要 `repo` 权限）
+- 目标仓库（例如：`yourname/my-skills`）
+- 同步间隔（默认：5 分钟）
+
+### 可选：一键安装（macOS/Linux）
+
+> **注意**：这会自动安装并运行 `skillsync init`
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/verycafe/skillsync/main/install.sh | bash
 ```
 
 ## 功能特性

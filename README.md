@@ -6,22 +6,29 @@
 
 ## Quick Start
 
-### macOS / Linux
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/verycafe/skillsync/main/install.sh | bash
-```
-
-### Windows (PowerShell)
-
-```powershell
-irm https://raw.githubusercontent.com/verycafe/skillsync/main/install.ps1 | iex
-```
-
-### Manual Installation
+### Installation
 
 ```bash
 pip install git+https://github.com/verycafe/skillsync.git
+```
+
+### Initialize
+
+```bash
+skillsync init
+```
+
+You'll be prompted to enter:
+- GitHub Personal Access Token (with `repo` permission)
+- Target repository (e.g., `yourname/my-skills`)
+- Sync interval (default: 5 minutes)
+
+### Alternative: One-line Install (macOS/Linux)
+
+> **Note**: This will install and automatically run `skillsync init`
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/verycafe/skillsync/main/install.sh | bash
 ```
 
 ## Features

@@ -33,7 +33,7 @@ def save_config(config):
     CONFIG_FILE.write_text(json.dumps(config, indent=2))
 
 @click.group()
-@click.version_option(version='1.0.0')
+@click.version_option(version='2.2.0')
 def main():
     """
     SkillSync - 自动同步你的 AI Skills
