@@ -503,5 +503,62 @@ def remove_dir(path):
 
     console.print(f"[green]✓ 已移除目录: {path}[/green]")
 
+@main.command()
+def uninstall():
+    """卸载 SkillSync"""
+    console.print("\n[bold cyan]卸载 SkillSync[/bold cyan]\n")
+
+    # 检查守护进程
+    config = load_config()
+    if config:
+        daemon = SkillSyncDaemon(config)
+        if daemon.is_running():
+            console.print("[yellow]检测到后台守护进程正在运行[/yellow]")
+            if Confirm.ask("是否停止后台守护进程?", default=True):
+                daemon.stop()
+                console.print("[green]✓ 已停止守护进程[/green]\n")
+
+    # 询问是否删除配置
+    config_dir = Path.home() / '.skillsync'
+    if config_dir.exists():
+        console.print(f"[yellow]配置目录: {config_dir}[/yellow]")
+        console.print("包含: config.json, metadata.json, sync.log 等文件\n")
+
+        if Confirm.ask("是否删除配置文件和数据?", default=False):
+            import shutil
+            shutil.rmtree(config_dir)
+            console.print("[green]✓ 已删除配置目录[/green]\n")
+        else:
+            console.print("[dim]保留配置文件（重新安装后可继续使用）[/dim]\n")
+
+    # 卸载说明
+    console.print("[bold]卸载 SkillSync 包:[/bold]")
+    console.print("运行以下命令:\n")
+    console.print("  [cyan]pip uninstall skillsync[/cyan]\n")
+    console.print("[dim]或者如果使用 pip3:[/dim]")
+    console.print("  [dim]pip3 uninstall skillsync[/dim]\n")
+
+    if Confirm.ask("是否现在执行卸载?", default=True):
+        console.print("\n[yellow]正在卸载...[/yellow]")
+        import subprocess
+        try:
+            # 尝试使用 pip3，如果失败则使用 pip
+            result = subprocess.run(
+                [sys.executable, "-m", "pip", "uninstall", "skillsync", "-y"],
+                capture_output=True,
+                text=True
+            )
+            if result.returncode == 0:
+                console.print("[green]✓ SkillSync 已成功卸载[/green]")
+                console.print("\n感谢使用 SkillSync！")
+            else:
+                console.print(f"[red]✗ 卸载失败: {result.stderr}[/red]")
+                console.print("请手动运行: pip uninstall skillsync")
+        except Exception as e:
+            console.print(f"[red]✗ 卸载失败: {e}[/red]")
+            console.print("请手动运行: pip uninstall skillsync")
+    else:
+        console.print("[dim]已取消自动卸载，请手动运行上述命令[/dim]")
+
 if __name__ == '__main__':
     main()

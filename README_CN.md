@@ -138,6 +138,14 @@ skillsync logs              # 查看日志
 skillsync add-dir <path>    # 添加自定义目录
 skillsync list-dirs         # 列出所有目录
 skillsync remove-dir <path> # 移除目录
+skillsync uninstall         # 卸载 SkillSync
+```
+skillsync start             # 启动后台同步
+skillsync stop              # 停止后台同步
+skillsync logs              # 查看日志
+skillsync add-dir <path>    # 添加自定义目录
+skillsync list-dirs         # 列出所有目录
+skillsync remove-dir <path> # 移除目录
 ```
 
 ## 工作原理
@@ -294,6 +302,32 @@ skillsync start
 
 # 查看日志
 skillsync logs
+```
+
+## 卸载
+
+### 快速卸载
+
+```bash
+skillsync uninstall
+```
+
+这将会：
+1. 停止后台守护进程（如果正在运行）
+2. 询问是否删除配置文件
+3. 卸载 skillsync 包
+
+### 手动卸载
+
+```bash
+# 停止守护进程
+skillsync stop
+
+# 卸载包
+pip uninstall skillsync
+
+# 可选：删除配置
+rm -rf ~/.skillsync
 ```
 
 ## 开发

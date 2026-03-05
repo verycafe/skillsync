@@ -138,6 +138,14 @@ skillsync logs              # View logs
 skillsync add-dir <path>    # Add custom directory
 skillsync list-dirs         # List all directories
 skillsync remove-dir <path> # Remove directory
+skillsync uninstall         # Uninstall SkillSync
+```
+skillsync start             # Start background sync
+skillsync stop              # Stop background sync
+skillsync logs              # View logs
+skillsync add-dir <path>    # Add custom directory
+skillsync list-dirs         # List all directories
+skillsync remove-dir <path> # Remove directory
 ```
 
 ## How It Works
@@ -294,6 +302,32 @@ skillsync start
 
 # Check logs
 skillsync logs
+```
+
+## Uninstall
+
+### Quick Uninstall
+
+```bash
+skillsync uninstall
+```
+
+This will:
+1. Stop the background daemon (if running)
+2. Ask if you want to delete configuration files
+3. Uninstall the skillsync package
+
+### Manual Uninstall
+
+```bash
+# Stop daemon
+skillsync stop
+
+# Uninstall package
+pip uninstall skillsync
+
+# Optional: Remove configuration
+rm -rf ~/.skillsync
 ```
 
 ## Development
