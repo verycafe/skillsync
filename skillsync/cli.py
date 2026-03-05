@@ -70,9 +70,16 @@ def init():
     # GitHub 配置
     console.print("[bold]GitHub 配置[/bold]")
     console.print("需要一个 GitHub Personal Access Token (权限: repo)")
-    console.print("创建地址: https://github.com/settings/tokens/new\n")
+    console.print("创建地址: https://github.com/settings/tokens/new")
+    console.print("\n[dim]创建步骤:[/dim]")
+    console.print("[dim]  1. 访问上面的链接[/dim]")
+    console.print("[dim]  2. Note: 填写 'SkillSync'[/dim]")
+    console.print("[dim]  3. Expiration: 选择 'No expiration' 或 '90 days'[/dim]")
+    console.print("[dim]  4. Select scopes: 勾选 'repo' (完整仓库访问权限)[/dim]")
+    console.print("[dim]  5. 点击 'Generate token' 并复制生成的 token[/dim]")
+    console.print("\n[yellow]提示: 输入 token 时不会显示字符（安全保护），直接粘贴后按回车即可[/yellow]\n")
 
-    token = Prompt.ask("GitHub Token", password=True)
+    token = Prompt.ask("GitHub Token (ghp_...)", password=True)
     repo = Prompt.ask("目标仓库 (例如: yourname/my-skills)")
 
     # 同步间隔
