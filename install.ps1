@@ -41,7 +41,7 @@ Write-Host ""
 Write-Host "Installing SkillSync..." -ForegroundColor Yellow
 
 # 安装
-pip install --upgrade git+https://github.com/yourusername/skillsync.git
+pip install --upgrade git+https://github.com/verycafe/skillsync.git
 
 # 验证安装
 if (Get-Command skillsync -ErrorAction SilentlyContinue) {

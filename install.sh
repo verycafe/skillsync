@@ -76,7 +76,7 @@ echo -e "${YELLOW}Installing SkillSync...${NC}"
 # $PIP_CMD install --upgrade skillsync
 
 # 安装方式 2: 从 GitHub 安装（开发阶段）
-$PIP_CMD install --upgrade git+https://github.com/yourusername/skillsync.git
+$PIP_CMD install --upgrade git+https://github.com/verycafe/skillsync.git
 
 # 验证安装
 if command -v skillsync &> /dev/null; then
